@@ -7,6 +7,7 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Axios from 'axios'
+// import Swal from 'sweetalert2'
 
 
 // import Vuetify from 'vuetify'
@@ -14,6 +15,7 @@ import Axios from 'axios'
 // import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(BootstrapVue)
+// Vue.use(Swal)
 Vue.use(Axios)
 
 // Vue.use(Vuetify)

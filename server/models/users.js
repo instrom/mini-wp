@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const {hashPassword} = require('../helpers/bcrpytPassword')
+const {hashPassword} = require('../helpers/bcryptPassword')
 
 const UserSchema = new Schema({
     username: {
