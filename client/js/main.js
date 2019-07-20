@@ -7,6 +7,7 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Axios from 'axios'
+import Editor from '@tinymce/tinymce-vue'
 // import Swal from 'sweetalert2'
 
 
@@ -17,6 +18,7 @@ import Axios from 'axios'
 Vue.use(BootstrapVue)
 // Vue.use(Swal)
 Vue.use(Axios)
+Vue.use(Editor)
 
 // Vue.use(Vuetify)
 new Vue(App).$mount('#app');

@@ -1,10 +1,20 @@
 <template>
-  <div>
+  <div class="bodyHtml">
     <NavBar></NavBar>
-    <Home></Home>
+    <Home v-if="isLogin"></Home>
     <LoginForm @showProfilePage="showPage"></LoginForm>
     <RegisterForm></RegisterForm>
-    <SideBar v-if="page == 'profile'"></SideBar>
+    <b-row>
+      <b-col cols="3" v-if="page == 'profile'">
+        <SideBar ></SideBar>
+      </b-col>
+      <b-container>
+        <b-col cols="9"  v-if="page =='profile'">
+          <AllArticles></AllArticles>
+        </b-col>
+      </b-container>
+    </b-row>
+    <AddArticle></AddArticle>
   </div>
 </template>
 
@@ -14,6 +24,8 @@ import Home from './components/HomePage'
 import LoginForm from './components/LoginForm'
 import RegisterForm  from './components/RegisterForm'
 import SideBar from './components/Sidebar'
+import AllArticles from './components/AllArticles'
+import AddArticle from './components/AddArticle'
 
 export default {
   components: {
@@ -21,17 +33,21 @@ export default {
     Home,
     LoginForm,
     RegisterForm,
-    SideBar
+    SideBar,
+    AllArticles,
+    AddArticle
   },
   created() {
     if(localStorage.getItem('token')) {
       this.page = 'profile'
+      console.log(this.page)
     }
   },
   data() {
     return {
       message: 'Hello world',
-      page: ''
+      page: '',
+      isLogin: false
     };
   },
   methods: {
@@ -43,4 +59,7 @@ export default {
 </script>
 
 <style scoped>
+.bodyHtml {
+  background-color: #e6e6e6;
+}
 </style>

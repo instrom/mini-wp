@@ -55,6 +55,10 @@ nav a {
 }
 
 /* end homePage */
+
+.articleHeaders {
+    width: 100%;
+}
 /* 
 .iconAndText span {
     padding-left: 15px;

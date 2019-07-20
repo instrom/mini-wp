@@ -13,6 +13,9 @@ const articleSchema = new Schema({
   userId: {
     type: Schema.Types.ObjectId,
     ref: 'User'
+  },
+  imageUrl: {
+    type: String
   }
 },{timestamps:{createdAt:'createdAt'}, versionKey: false})
 
