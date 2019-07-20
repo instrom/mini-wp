@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2be375d837.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/hover.css">
+    <title>Document</title>
+</head>
+<body class="grey lighten-4" >
+    <div id="app">
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo left logoBrand"><img src="images/logoBrand.png" alt="Logo"></a>
+                    <a href="#" class="brand-logo center valign-wrapper" style="font-family: 'Poppins', sans-serif;">Word Encounter</a>
+                        <ul id="nav-mobile" class="right valign-wrapper">
+                            <li><a href="#" class="btn waves-effect waves-teal">Home</a></li>
+                            <li><a class="btn waves-effect waves-teal" v-on:click.prevent="showPage('loginFormPage')">Login</a></li>
+                            <li><a href="#" class="btn waves-effect waves-teal">Register</a></li>
+                        </ul>
+                </div>
+            </nav>
+    
+            <div class="row">
+
+                <!-- <div class="col s12">
+
+                </div> -->
+                <div class="col s3" id="managePost">
+                    <div class="card-panel white">
+                        <div class="card-image">
+                            <img src="./images/frenchieImg.webp" alt="avatar" class="responsive-img">
+                        </div>
+                        <div class="card-content center-align">
+                            <p style="font-family: 'Open Sans', sans-serif;">My name is Typsi</p>
+                        </div>
+                    </div>
+                    <ul class="collection with-header">
+                        <a class="collection-item">
+                            <div class="iconAndText valign-wrapper">
+                                <i class="material-icons">computer</i>
+                                <span> View Projects</span>
+                            </div>
+                        </a>
+                        <a class="collection-item">
+                            <div class="iconAndText valign-wrapper">
+                                <i class="material-icons">equalizer</i>
+                                <span>Status</span>
+                            </div>
+                        </a>
+                        <a class="collection-item">
+                            <div class="iconAndText valign-wrapper">
+                                <i class="material-icons">access_time</i>
+                                <span>Activity</span>
+                            </div>
+                        </a>
+                        <li class="collection-header">
+                            <span>Manage Posts</span>
+                        </li>
+                        <a class="collection-item" v-on:click.prevent="showPage('posts')">
+                            <div class="iconAndText valign-wrapper">
+                                <i class="fab fa-wordpress fa-lg"></i>
+                                <span> View Posts</span>
+                            </div>
+                        </a>
+                        <a class="collection-item" v-on:click.prevent="showPage('addPosts')">
+                            <div class="iconAndText valign-wrapper">
+                                    <i class="fas fa-folder-plus fa-lg"></i>
+                                <span> Add Posts</span>
+                            </div>
+                        </a>
+                        <a class="collection-item">
+                            <div class="iconAndText valign-wrapper">
+                                <i class="fas fa-comment-dots fa-lg"></i>
+                                <span> Comments</span>
+                            </div>
+                        </a>
+                        <a class="collection-item">
+                            <div class="iconAndText valign-wrapper">
+                                <i class="fas fa-photo-video fa-lg"></i>
+                                <span> Media</span>   
+                            </div>
+                        </a>
+                        <a class="collection-item">
+                            <div class="iconAndText valign-wrapper">
+                                <i class="fab fa-hire-a-helper fa-lg"></i>
+                                <span> Feedback</span>   
+                            </div>
+                        </a>
+                        <li class="collection-header">
+                            <span>
+                                Manage Account
+                            </span>
+                        </li>
+                        <a class="collection-item">
+                            <div class="iconAndText valign-wrapper">
+                                <i class="fas fa-user fa-lg"></i>
+                                <span> Edit Profile</span>   
+                            </div>
+                        </a>
+                        <a class="collection-item">
+                            <div class="iconAndText valign-wrapper">
+                                <i class="far fa-money-bill-alt"></i>
+                                <span> Payment Settings</span>   
+                            </div>
+                        </a>
+                    </ul>
+                </div>
+                
+    
+        <!-- Create the editor container -->
+        <div class="col s9" v-show="page==='addPosts'">
+            <div class="container">
+                <div class="card-panel white">
+                    <form @submit.prevent="addArticleDatabase">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" v-model="artStylesTitle">
+                        <editor api-key="tuo2utcwjocjuuc3jxre3zi4nqa28wh3a3nily86v8f39ho2
+                        " :init="{menubar: false}" v-model="artStylesContent"></editor>
+                        <button type="submit">Submit</button>
+                        <p v-html="artStylesContent"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container" v-show="page==='loginFormPage'">
+            <div class="col 12 offset-s6">
+                <h1>Login Form</h1>
+                <form>
+                    
+                </form>
+            </div>
+        </div>
+
+        <div class="container" v-show="page==='updateFormPage'">
+            <div class="col 12 offset-s3">
+                <h2>Update Form</h2>
+                <form @submit.prevent="updateArticleSubmit">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" v-model="artStylesTitle">
+                    <editor api-key="tuo2utcwjocjuuc3jxre3zi4nqa28wh3a3nily86v8f39ho2
+                    " :init="{menubar: false}" v-model="artStylesContent"></editor>
+                    <button type="submit">Submit</button>
+                    <p v-html="artStylesContent"></p>
+                </form>
+            </div>
+        </div>
+               
+    
+            <div class="col s9 grey lighten-4" id="barisKanan">
+                <div class="container" v-if="page==='posts'">
+                    <div class="row">
+                        <div class="card-panel white wordEncounterHeaders">
+                            <div class="published">
+                                <a href="#" class="hvr-grow" id="app">Published</a>
+                            </div>
+                            <div class="drafts">
+                                <a href="#" class="hvr-grow">Drafts</a>
+                            </div>
+                            <div class="search">
+                                <!-- <form class="example" action="action_page.php"> -->
+                                    <input type="text" placeholder="Search.." name="search" v-model="search">
+                                    <!-- <button type="submit"><i class="fa fa-search"></i></button> -->
+                                <!-- </form> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row" >
+                        <div class="col s12">
+                            <div class="card-panel white publishedContent">
+                                <div class="card-content">
+                                    <h5>The Journey Begins</h5>
+                                </div>
+                                <div class="card-image imageDiCard">
+                                    <img src="./images/logoBrand.png" class="responsive-img" alt="logo" style="width: 100px; height: 100px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="row" v-for="artStyle in filteredItems">
+                        <div class="col s12">
+                            <div class="card-panel white publishedContent">
+                                <div class="col s3">
+                                    <img src="./images//frenchieImg.webp" class="responsive-img" alt="doggie">
+                                </div>
+                                <div class="col s9">
+                                    <div class="card-content textContent" style="font-family: 'Open Sans', sans-serif;">
+                                        <h5>{{artStyle.title}}</h5>
+                                        <p v-html="artStyle.content"></p>
+                                    </div>
+                                    <div class="card-action linkDeleteUpdate">
+                                        <a href="#" @click.prevent="deleteArticle(artStyle._id)">Delete</a>
+                                        <a href="#" @click.prevent="updateArticlePage(artStyle._id)">Update</a>
+                                    </div>
+                                    <!-- button delete disini v-on -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col s12">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="" class="responsive-img">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                                    <p><a href="#">This is a link</a></p>
+                                </div>
+                                <div class="card-reveal">
+                                    <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+        
+        <!-- Initialize Quill editor -->
+    <script src="./node_modules/@tinymce/tinymce-vue/lib/browser/tinymce-vue.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/tuo2utcwjocjuuc3jxre3zi4nqa28wh3a3nily86v8f39ho2/tinymce/5/tinymce.min.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"> </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+   
+    <script src="js/main.js"></script>
+</body>
+</html>
