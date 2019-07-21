@@ -1,5 +1,6 @@
 <template>
 <body>
+    <div>
       <div class="card">
         <img src="../../images/frenchieImg.webp" alt="Avatar" style="width:100%">
         <b-container class="text-center">
@@ -8,30 +9,29 @@
         </b-container>
       </div>
      <b-card-group deck>
-       <b-card header="Heading">
+       <b-card >
          <b-list-group>
-           <b-list-group-item class="d-flex align-items-center" href="#">
+           <b-list-group-item class="d-flex align-items-center" href="#" @click.prevent="allArticles">
                   <div class="iconAndText">
                       <i class="material-icons">computer</i>
-                      <span> View Projects</span>
+                      <span> View All Posts</span>
                   </div>
-            
            </b-list-group-item>
-           <b-list-group-item class="d-flex align-items-center" href="#">
+           <b-list-group-item class="d-flex align-items-center" href="#" @click.prevent="myArticlePage">
                <a class="collection-item" >
                     <div class="iconAndText valign-wrapper">
                         <i class="fab fa-wordpress fa-lg"></i>
-                        <span> View Posts</span>
+                        <span> View My Posts</span>
                     </div>
                 </a>
            </b-list-group-item>
-           <b-list-group-item class="d-flex align-items-center">
-             <b-button v-b-modal.addArticleModal> 
-                <div class="iconAndText valign-wrapper">
-                        <i class="fas fa-folder-plus fa-lg"></i>
-                    <span v-b-modal.addArticleModal> Add Posts</span>
-                </div>
-             </b-button>
+           <b-list-group-item class="d-flex align-items-center" href="#" v-b-modal.addArticleModal>
+               <a class="collection-item" >
+                    <div class="iconAndText valign-wrapper">
+                            <i class="fas fa-folder-plus fa-lg"></i>
+                        <span > Add Posts</span>
+                    </div>
+               </a>
            </b-list-group-item>
            <b-list-group-item class="d-flex align-items-center" href="#">
              <a class="collection-item">
@@ -51,6 +51,7 @@
            </b-list-group-item>
          </b-list-group>
      </b-card-group>
+    </div>
 </body>
 </template>
 
@@ -65,14 +66,20 @@ export default {
     }
   },
   created() {
-    if(localStorage.getItem('username')) {
+    if(localStorage.getItem('token')) {
       this.getName()
     }
   },
   methods: {
     getName() {
-      this.user.name = localStorage.getItem('username')
-      this.user.email = localStorage.getItem('email')
+        this.user.name = localStorage.getItem('username')
+        this.user.email = localStorage.getItem('email')
+    },
+    myArticlePage() {
+        this.$emit('myArticles','myArticlesPage')
+    },
+    allArticles() {
+        this.$emit('allArticlesPage','profile')
     }
   }
 }

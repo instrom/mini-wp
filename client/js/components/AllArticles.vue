@@ -1,23 +1,92 @@
 <template>
- <b-container fluid>
-  <b-card  class="articleHeaders mt-4" text-variant="black" title="Published Article">
-    <b-card-text>
-      Below here, you can find articles to your liking!
-    </b-card-text>
-  </b-card>
- </b-container>
+  <div>
+    <b-card class="articleHeaders mt-4" text-variant="black" title="Published Article">
+      <b-card-text >
+        Below here, you can find articles to your liking!
+      </b-card-text>
+    </b-card>
+    <b-row>
+    <b-col cols="6" v-for="article in articles" :key="article._id">
+      <div class="articleContent" style="max-width: 100%;">
+        <img class="card-img-top img-fluid" :src="article.imageUrl" alt="Card image cap">
+        <div class="card-body bg-light" style="max-width: 100%; word-wrap: break-word;">
+          <h5 class="card-title">{{article.title}}</h5>
+          <p v-line-clamp:20="2" class="card-text" v-html="article.content" style="width: 600px; height: 50px; font-size: 30px;"></p>
+          <p>Created By: {{article.userId.username}}</p>
+          <p>{{article.updatedAt | moment('from')}}</p>
+          <a @click.prevent="getArticleId(article._id)" class="btn btn-primary">Read More!</a>
+        </div>
+      </div>
+    </b-col>
+  </b-row>
+</div>
+
   
 </template>
 
 <script>
+const baseUrl = `http://localhost:3000/api/articles`
 export default {
-
+  data() {
+    return {
+      articles: []
+    }
+  },
+  props: {
+    addNewArticle: Number
+  },
+  created() {
+    this.allArticles()
+    // console.log(this.addNewArticle)
+  },
+  methods: {
+    allArticles() {
+      axios.get(`${baseUrl}/findAll`,{
+        headers: {
+          'token': localStorage.getItem('token')
+        }
+      })
+        .then(({data}) => {
+          this.articles = data
+          console.log(this.articles)
+          // console.log(this.addNewArticle)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    getArticleId(id) {
+      this.$emit('oneArticleId',id)
+    }
+  },
+  watch: {
+    addNewArticle: function(){
+      this.allArticles()
+    }
+  }
 }
 </script>
 
-<style scoped>
+<style>
 
-
+ /* <b-card class="articleContent"  >
+        <b-row>
+          <b-col cols="4">
+            <img :src="article.imageUrl" alt="" fluid>
+          </b-col>
+          <b-col cols="8">
+            <b-card-body :title=article.title>
+              <b-card-text v-html="article.content">
+              </b-card-text>
+            </b-card-body>
+            <b-card-footer class="mt-5">
+              Created By: {{article.userId.username}}
+              <br>
+              {{article.createdAt}}
+            </b-card-footer>
+          </b-col>
+        </b-row>
+      </b-card> */
 </style>
 
 

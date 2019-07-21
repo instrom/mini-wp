@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <b-modal id="registerModal" centered size="lg" title="Registration" v-bind:hide-footer="true" v-bind:ok-disabled="true">
+    <b-modal ref="my-modal" id="registerModal" centered size="lg" title="Registration" v-bind:hide-footer="true" v-bind:ok-disabled="true">
       <b-form @submit.prevent="registerUser">
         <b-form-group label="Email address:" description="We will never share your email with anyone else">
           <b-form-input type="email" required placeholder="Enter Email" v-model="register.email">
@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     registerUser() {
-      console.log('asd')
+      // console.log('asd')
       axios.post(`${baseUrl}/users/register`, {
         email: this.register.email,
         username: this.register.username,
@@ -50,17 +50,19 @@ export default {
             type: 'success',
             text: `Successfully registered! email sent to ${this.register.email}`
           })
-          console.log(data)
+           this.hideModal()
         })
-        .catch((err) => {
-          if(err) {
+        .catch((error) => {
             Swal.fire({
               type: 'error',
-              text: `${err.response.data.message}`
+              text: `${error.response.data.message}`
             })
-          }
+          
         })
-    }
+    },
+    hideModal() {
+        this.$refs['my-modal'].hide()
+    },
   }
 }
 </script>

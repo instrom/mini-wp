@@ -7,16 +7,32 @@
         <h4>Word Encounter</h4>
       </b-navbar-brand>
       <b-nav class="linkRegister" tabs align="center">
-        <b-nav-item> <b-button>Home</b-button></b-nav-item>
-        <b-nav-item><b-button v-b-modal.loginModal>Login</b-button></b-nav-item>
-        <b-nav-item><b-button v-b-modal.registerModal>Register</b-button></b-nav-item>
+        <b-nav-item><b-button  v-if="pageNow == 'profile' || pageNow =='myArticlesPage' || pageNow == 'readArticle'" @click.prevent="loggingOut">Sign Out</b-button></b-nav-item>
+        <b-nav-item><b-button v-if="pageNow =='home'" v-b-modal.loginModal>Login</b-button></b-nav-item>
+        <b-nav-item><b-button v-if="pageNow =='home'" v-b-modal.registerModal>Register</b-button></b-nav-item>
       </b-nav>
   </b-nav>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
 
+    }
+  },
+  props: ['pageNow'],
+  methods: {
+    loggingOut() {
+      console.log(this.pageNow)
+      this.$emit('logOut','home')
+      localStorage.clear()
+      Swal.fire({
+        type: 'success',
+        text: 'successfully logged out!'
+      })
+    }
+  }
 }
 </script>
 

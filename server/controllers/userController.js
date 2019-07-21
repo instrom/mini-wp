@@ -106,6 +106,7 @@ class UserController {
             return User.findOne({email:payload.email})
         })
         .then((userFound) => {
+            // console.log(userFound)
             if(userFound) {
                 // console.log(userFound)
                 // let tokenJWT = createToken({username: userFound.username, email: userFound.email,_id: userFound._id}, process.env.JWT_SECRET)
@@ -125,17 +126,15 @@ class UserController {
             // console.log(dataCreated)
             if(dataCreated) {
                 // console.log(dataCreated)
-                let tokenJWT = createToken({username: dataCreated.username, email: dataCreated.email,_id: userFound._id}, process.env.JWT_SECRET)
-                res.status(201).json(tokenJWT)
+                let tokenJWT = createToken({username: dataCreated.username, email: dataCreated.email,_id: dataCreated._id}, process.env.JWT_SECRET)
+                res.status(201).json({token:tokenJWT, username: payload.given_name+payload.family_name, email: payload.email})
             } else {
                 next()
             }
         })
         .catch(next)
         // console.log(ticket)
-
     }
-
 
 }
 

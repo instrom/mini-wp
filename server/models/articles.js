@@ -15,9 +15,10 @@ const articleSchema = new Schema({
     ref: 'User'
   },
   imageUrl: {
-    type: String
+    type: String,
+    required: [true, 'an article must have an image']
   }
-},{timestamps:{createdAt:'createdAt'}, versionKey: false})
+},{timestamps:true, versionKey: false})
 
 const Article = mongoose.model('Article',articleSchema)
 

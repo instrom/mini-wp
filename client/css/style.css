@@ -58,6 +58,48 @@ nav a {
 
 .articleHeaders {
     width: 100%;
+    color: #51A39A;
+    font-family: 'Poppins', sans-serif;
+}
+
+.articleContainer {
+    padding-left: 10px;
+    margin-left: 10px
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+  
+.articleHeaders img {
+    width: 60px;
+    height: 40px;
+}
+
+.containerArticles {
+    margin-right: 30px;
+}
+
+.articleContent {
+    max-width: 100%;
+    margin-top: 10px;
+    font-family: 'Bitter', serif;
+}
+
+.cardParagraph p {
+    word-wrap: break-word;
+    width: 500px;
+}
+
+p {
+    font-size: 18px;
+}
+
+
+html {
+    background-color: #e6e6e6;
 }
 /* 
 .iconAndText span {

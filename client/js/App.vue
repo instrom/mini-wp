@@ -1,20 +1,23 @@
 <template>
   <div class="bodyHtml">
-    <NavBar></NavBar>
-    <Home v-if="isLogin"></Home>
+    <NavBar @logOut="showPage" :pageNow="page"></NavBar>
+    <Home v-if="page == 'home' && page !== 'profile'"></Home>
     <LoginForm @showProfilePage="showPage"></LoginForm>
     <RegisterForm></RegisterForm>
     <b-row>
-      <b-col cols="3" v-if="page == 'profile'">
-        <SideBar ></SideBar>
+      <b-col cols="3" v-if="page == 'profile' || page == 'myArticlesPage' || page =='readArticle'">
+        <SideBar @myArticles="showPage" @allArticlesPage="showPage"></SideBar>
       </b-col>
-      <b-container>
-        <b-col cols="9"  v-if="page =='profile'">
-          <AllArticles></AllArticles>
-        </b-col>
-      </b-container>
+      <b-col cols="9">
+        <div class="containerArticles">
+          <AllArticles v-if="page =='profile'" :addNewArticle="articleData" :updated="articleData" @oneArticleId="getReadArticle"></AllArticles>
+          <MyArticles v-if="page =='myArticlesPage'" :addNewArticle="articleData" @updateArticleModal="getArticleId" :updated="articleData"></MyArticles>
+          <ReadArticle :passArticleId="articleId" v-if="page =='readArticle'"></ReadArticle >
+        </div>
+      </b-col>
     </b-row>
-    <AddArticle></AddArticle>
+    <AddArticle @addedArticle="addedArticleData"></AddArticle>
+    <UpdateArticle :idArticle="articleId" @updatedArticle="addedArticleData"></UpdateArticle>
   </div>
 </template>
 
@@ -26,6 +29,9 @@ import RegisterForm  from './components/RegisterForm'
 import SideBar from './components/Sidebar'
 import AllArticles from './components/AllArticles'
 import AddArticle from './components/AddArticle'
+import MyArticles from './components/MyArticles'
+import UpdateArticle from './components/UpdateArticle'
+import ReadArticle from './components/ReadArticle'
 
 export default {
   components: {
@@ -35,26 +41,51 @@ export default {
     RegisterForm,
     SideBar,
     AllArticles,
-    AddArticle
+    AddArticle,
+    MyArticles,
+    UpdateArticle,
+    ReadArticle
   },
   created() {
     if(localStorage.getItem('token')) {
+    // this.showPage()
+      // this.isLogin = true
       this.page = 'profile'
-      console.log(this.page)
+      // this.showPage()
+      // console.log(this.page)
+    } else {
+      // this.showPage()
+      this.page = 'home'
     }
   },
   data() {
     return {
       message: 'Hello world',
       page: '',
-      isLogin: false
+      isLogin: false,
+      articleData: 0,
+      articleId: '',
     };
   },
   methods: {
     showPage(input) {
+      // console.log(input)
       this.page = input
+    },
+    addedArticleData() {
+      this.articleData++;
+    },
+    getArticleId(input) {
+      // console.log(input)
+      this.articleId = input
+    },
+    getReadArticle(input) {
+      this.articleId = input
+      // console.log(this.articleId)
+      this.page = 'readArticle'
     }
-  }
+
+}
 };
 </script>
 

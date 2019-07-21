@@ -9,13 +9,18 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Axios from 'axios'
 import Editor from '@tinymce/tinymce-vue'
 // import Swal from 'sweetalert2'
-
-
-// import Vuetify from 'vuetify'
-// import 'vuetify/dist/vuetify'
-// import 'vuetify/dist/vuetify.min.css'
-
+import GAuth from 'vue-google-oauth2'
+import lineClamp from 'vue-line-clamp'
+import moment from 'vue-moment'
+const gauthOption = {
+  clientId: '174713080632-2m2cc7s5thudeoro462uoluq3f9h53cp.apps.googleusercontent.com',
+  scope: 'profile email',
+  prompt: 'select_account'
+}
+Vue.use(GAuth, gauthOption)
+Vue.use(lineClamp)
 Vue.use(BootstrapVue)
+Vue.use(moment)
 // Vue.use(Swal)
 Vue.use(Axios)
 Vue.use(Editor)
