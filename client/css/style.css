@@ -1,0 +1,180 @@
+/* NAVBAR */
+
+.colourNav {
+    justify-content: space-between;
+    align-items: center;
+}
+nav {
+    height: 100px;
+    background-color: #1E2A39;
+}
+
+nav ul {
+   height: 90px;
+}
+nav a {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.colourNav .linkRegister {
+    padding: 10px;
+}
+
+.colourNav h4 {
+    color: #51A39A;
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+}
+
+.colourNav a{
+    color: #51A39A;
+    font-family: 'Poppins', sans-serif;
+}
+
+.colourNav img {
+    width: 100px;
+    height: 80px;
+    padding-left: 20px;
+}
+/* END NAVBAR */
+
+/* homePage */
+
+.homeContainer {
+    padding: 100px;
+}
+
+.homeContainer .jumbotron {
+    background-color: #1E2A39;
+}
+
+.homeContainer h1{
+    color: #51A39A;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* end homePage */
+
+.articleHeaders {
+    width: 100%;
+    color: #51A39A;
+    font-family: 'Poppins', sans-serif;
+}
+
+.articleContainer {
+    padding-left: 10px;
+    margin-left: 10px
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+  
+.articleHeaders img {
+    width: 60px;
+    height: 40px;
+}
+
+.containerArticles {
+    margin-right: 30px;
+}
+
+.articleContent {
+    max-width: 100%;
+    margin-top: 10px;
+    font-family: 'Bitter', serif;
+}
+
+.cardParagraph p {
+    word-wrap: break-word;
+    width: 500px;
+}
+
+p {
+    font-size: 18px;
+}
+
+
+html {
+    background-color: #e6e6e6;
+}
+/* 
+.iconAndText span {
+    padding-left: 15px;
+}
+
+.wordEncounterHeaders {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.wordEncounterHeaders a {
+    padding: 15px;
+    color: #51A39A;
+}
+
+.wordEncounterHeaders .search{
+   margin-left: auto;
+}
+
+.imageCard {
+    width: 100px;
+    height: 100px;
+}
+
+.publishedContent {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.imageDiCard {
+    margin-left: auto;
+}
+
+.textContent {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#barisKanan {
+    overflow: auto;
+    height: 90vh;
+}
+
+/* input search */
+/* Style the search field */
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 60%;
+    background: #f1f1f1;
+}
+  
+  /* Style the submit button */
+form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+}
+  
+form.example button:hover {
+    background: #0b7dda;
+}
+  
+  /* Clear floats */
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+} 

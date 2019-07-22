@@ -1,0 +1,12 @@
+const router = require('express').Router()
+const ArticleController = require('../controllers/articleController')
+const authentication = require('../middlewares/authentication')
+const authorization = require('../middlewares/authorization')
+router.get('/findAll',ArticleController.findAll)
+router.use(authentication)
+router.post('/createArticle',ArticleController.create)
+router.get('/findMyArticles',ArticleController.findMyArticles)
+router.get('/:id',ArticleController.findOne)
+router.delete('/deleteArticle/:id',authorization,ArticleController.destroy)
+router.patch('/:id',authorization,ArticleController.update)
+module.exports = router
